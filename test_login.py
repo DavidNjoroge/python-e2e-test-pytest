@@ -16,9 +16,9 @@ def test_submit_form(driver):
 
 
 # Test step 4 - verify URL
-def test_verify_url(driver, url):
-   tests.verify_url(driver, url)
+# def test_verify_url(driver, url):
+#    tests.verify_url(driver, url)
 
-#Test step 5 - open new member form
+#Test step 1 - open new member form
 def test_new_member(driver):
     tests.search_member_button(driver)

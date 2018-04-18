@@ -4,8 +4,8 @@ page = "login-header"
 username_el = "username"
 password_el = "password"
 submit = "//button[@type='submit']"
-expected_url = "http://payer-test-site.s3-website-ap-southeast-1.amazonaws.com/#/"
-new_member = "//a[contains(@href, '#/new-member/')]"
+expected_url = "localhost:4200/#/"
+new_member = "new-member"
 
 def open_url(driver, url):
    driver.get(url)
@@ -27,10 +27,13 @@ def submit_form(driver):
    driver.find_element(By.XPATH, submit).click()
 
 
-def verify_url(driver, url):
-   assert url == driver.current_url
+# def verify_url(driver, url):
+#    assert expected_url == driver.current_url
 
 def search_member_button(driver):
-    # driver.find_element(By.CLASS_NAME, 'dropbtn').click()
-    driver.find_element(By.XPATH,new_member).click()
-    assert driver.find_element(By.CLASS_NAME)=='text-center'
+    driver.get(expected_url)
+    # dropdown-content
+    driver.find_element(By.CLASS_NAME, 'dropbtn').click()
+    driver.find_element(By.CLASS_NAME,new_member).click()
+    print(driver.find_element(By.CLASS_NAME,'text-center'))
+    assert driver.find_element(By.CLASS_NAME,'text-center')=='Register New Member'

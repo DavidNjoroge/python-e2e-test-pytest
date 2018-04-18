@@ -2,8 +2,8 @@ import pytest
 from selenium import webdriver
 
 def pytest_addoption(parser):
-   parser.addoption("--driver", action="store", default="./chrome", help="Type in browser type")
-   parser.addoption("--url", action="store", default="http://payer-test-site.s3-website-ap-southeast-1.amazonaws.com/#/login", help="url")
+   parser.addoption("--driver", action="store", default="./chromedriver", help="Type in browser type")
+   parser.addoption("--url", action="store", default="localhost:4200/#/login", help="url")
    parser.addoption("--username", action="store", default="254726609646", help="username")
    parser.addoption("--password", action="store", default="0000", help="password")
 
@@ -12,8 +12,8 @@ def pytest_addoption(parser):
 def driver(request):
    browser = request.config.getoption("--driver")
    print(browser)
-   if browser == './chrome':
-       browser = webdriver.Chrome()
+   if browser == './chromedriver':
+       browser = webdriver.Chrome('./chromedriver')
        browser.get("about:blank")
        browser.implicitly_wait(10)
     #    browser.maximize_window()
